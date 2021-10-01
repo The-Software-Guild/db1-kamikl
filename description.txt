@@ -1,0 +1,75 @@
+A database that describes a school, and within it:
+1)Students which attend the school - and their relevant personal information for the school
+2)Teachers which teach classes - and their relevant personal information for the school
+3)Classes which students attend and teachers teach - with relevant information, such as subject or time of day
+4)Classrooms in which the classes are taken, and the relevant data regarding the room
+5)Parents of students, as well as their contact information for the school
+
+
+
+
+Student
+---
+StudentId PK INT
+FirstName VARCHAR(20)
+LastName VARCHAR(20)
+DateOfBirth DATETIME
+
+
+
+Class
+--
+ClassId PK INT
+Name VARCHAR(20)
+Subject VARCHAR(20)
+Time DATETIME
+ClassroomId FK >- Classroom.ClassroomId
+
+
+
+
+Teacher
+--
+TeacherId PK INT
+FirstName VARCHAR(20)
+LastName VARCHAR(20)
+DateOfBirth DATETIME
+HouseNumber VARCHAR(10)
+Postcode VARCHAR(10)
+Salary FLOAT
+
+
+
+ClassTeacher
+--
+ClassId FK >- Class.ClassId
+TeacherId FK >- Teacher.TeacherId
+
+
+Classroom
+--
+ClassroomId PK INT
+Name VARCHAR(10)
+Size VARCHAR(10)
+Seats int
+
+Parent
+--
+ParentId PK INT
+FirstName VARCHAR(20)
+LastName VARCHAR(20)
+HouseNumber VARCHAR(10)
+Postcode VARCHAR(10)
+PhoneNumber VARCHAR(10)
+EmailAddress VARCHAR(30)
+
+ClassStudent
+--
+ClassId FK >- Class.ClassId
+StudentId FK >- Student.StudentId
+
+
+StudentParent
+--
+StudentId FK >- Student.StudentId INT
+ParentId FK >- Parent.ParentId INT
